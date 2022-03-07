@@ -39,14 +39,24 @@ var getHistory = function () {
 }
 
 var displayCurrentWeather = function (city, weather, timezone) {
-    var date = moment().tz(timezone).format('LL');
+    var date = moment();
+    // .tz("America/new_york").format('M/D/YYYY');
     console.log(date)
+    currentDate = (`${date.toString()}`);
+    console.log(currentDate)
+
+
+
+
+    // var date = moment();
+    //  .tz("America/New_York").format();
+    // console.log(date)
 
 
     var temp = weather.temp
     var windMph = weather.wind_speed
     var humity = weather.humity
-    var UVI = weather.uvi
+    var UV = weather.uv
     var iconUrl = `https://openweathermap.org/img/w/${weather.weather[0].icon}.png`
     var iconDescription = weather.weather[0].description || weather[0].main
 
@@ -115,8 +125,14 @@ var displayDailyForecastCard = function (forecast, timezone) {
 }
 
 var displayFiveDayForcast = function (dailyForecast, timezone) {
-    var startDt = moment().tz(timezone).add(1,'day').startOf("day").unix()
-    var endDt = moment().tz(timezone).add(6,'day').startOf("day").unix()
+//    var days = moment.weekdays(); days.push(days.shift()); moment.weekdays = days;
+   var startDt = moment()
+   var endDt = moment().add(5, 'days')
+   while (endDt.isAfter(startDt)) {
+       console.log(startDt.format('MM-DD-YYYY'))
+       //increment by one day
+      startDt = startDt.add(1, 'day')
+   }
     var headingCol = document.createElement('div')
     var heading = document.createElement('h4')
     headingCol.setAttribute("class", "col-12")
@@ -143,7 +159,9 @@ var fetchWeather = function(location) {
     var city = location.name
     var apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${APIKey}`
     fetch(apiUrl).then(function(response){
+        console.log(response.json)
         return response.json()
+      
 
     }).then(function(data){
         renderItem(city, data)
