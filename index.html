@@ -18,43 +18,32 @@
 
     <main class="container-fluid">
         <div class="row">
-            <div class="col-lg-3">
-                <h3 class="mt-1">Searh for a City</h3>
-                <form id="search-form" action="">
+            <div class="col-12 col-md-3 p-2 search-colum">
+                <form class="border p-2" id="city-search-form">
+                    <h3 class="mt-1">Searh for a City</h3>
                     <label class="form-label" for="cityname"></label>
-                    <input name="city" id="enter-city" type="text" class="form-input" placeholder="Enter a city"
+                    <input name="city" id="city" type="text" class="form-input" placeholder="Enter a city"
                         autofocus="true">
-                    <button id="search-button" class="btn btn-primary" type="submit">Search</button>
+                    <button class="btn btn-primary" type="submit">Search</button>
                 </form>
-                <div id="history"></div>
+                <div class = "past-search border" id="past-search-btn"></div>
             </div>
         </div>
-        <div class="col-lg-9">
-            <div class="row mr-0">
-                <div class="col-lg-11 card m-3 d-none" id="today-weather">
+        <div class="col-12 col-md-9">
+            <div class="row border selected-city" id="current-forecast">
+                <div class="col-12">
                     <div class="card-body">
-                        <h3 id="city-name" class="city-name aling-middle"></h3>
-                        <p id="temperature"></p>
-                        <p id="humidity"></p>
-                        <p id="wind-speed"></p>
-                        <p id="UV-index"></p>
+                    <h2 id="searched-city"></h2>
+                    <div id="current-weather-container" class="list-group"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row d-none" id="fiveday-header">
-            <div class="col-12">
-                <h3>5-Day Forecast</h3>
-                <div id="forecast"></div>
+        <div class="row border" id="fiveday-header">
+                <h3 class="col-12" id="forecast"></h3>
+                <div class="d-flex" id="five-day-container"></div>
             </div>
         </div>
-        <!-- <div class="row">
-            <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-            <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-            <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-            <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-            <div class="col-md-2 forecast bg-primary text-white m-2 rounded"></div>
-        </div> -->
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
