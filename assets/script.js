@@ -20,17 +20,24 @@ var saveSearch = function (city) {
     var oldHistory = JSON.parse(oldHistoryString)
     oldHistory.unshift(city)
     var newHistoryString = JSON.stringify(oldHistory)
-    localStorage.setItem("SearchHistory", newHistoryString);
-    for (var i = 0; i < oldHistoryString.length; i++) {
+    
+    if (!oldHistory.includes(city)) {
+        localStorage.setItem("SearchHistory", newHistoryString);
+    }
+  
+    oldHistory.map(history => {
+        console.log(history)
+        var pastSearchEl = document.createElement("button");
+        pastSearchEl.textContent = (history);
+        pastSearchEl.classList = "d-flex w-100 btn-light border p-2";
+        pastSearchEl.setAttribute("data-city", history)
+        pastSearchEl.setAttribute("type", "submit");
+        pastSearchButtonEl.appendChild(pastSearchEl)
+ 
 
-                var pastSearchEl = document.createElement("button");
-                pastSearchEl.textContent = oldHistoryString;
-                pastSearchEl.classList = "d-flex w-100 btn-light border p-2";
-                pastSearchEl.setAttribute("data-city", oldHistoryString)
-                pastSearchEl.setAttribute("type", "submit");
-                pastSearchButtonEl.appendChild(pastSearchEl)
-            }
+    })
 }
+
 
 
 var pastSearchButtonEl = document.querySelector("#past-search-btn");
@@ -49,27 +56,6 @@ var cityFormElSubmit = function (event) {
     }
     saveSearch(city)
 }
-
-// var searchHistoryBtn = function () {
-//     console.log("Hello!")
-//     pastSearchButtonEl.innerHTML = ' ';
-//     for (var i = 0; i < SearchHistory.length; i++) {
-
-//         var pastSearchEl = document.createElement("button");
-//         pastSearchEl.textContent = SearchHistory;
-//         pastSearchEl.classList = "d-flex w-100 btn-light border p-2";
-//         pastSearchEl.setAttribute("data-city", SearchHistory)
-//         pastSearchEl.setAttribute("type", "submit");
-//         pastSearchButtonEl.appendChild(pastSearchEl)
-//     }
-
-// }
-// searchHistoryBtn()
-
-
-
-
-
 
 var getCityWeather = function (userInput) {
     var APIKey = "82109c1a55b9585d216158ebdbf7c5de"
@@ -237,33 +223,6 @@ var display5Day = function (weather) {
     }
 
 }
-
-// var pastSearch = function () {
-
-//     console.log("PastSearch Fire!")
-
-//     var pastSearchEl = document.createElement("button");
-//     pastSearchEl.textContent = searchHistory;
-//     pastSearchEl.classList = "d-flex w-100 btn-light border p-2";
-//     pastSearchEl.setAttribute("data-city", searchHistory)
-//     pastSearchEl.setAttribute("type", "submit");
-
-//     pastSearchButtonEl.prepend(pastSearchEl);
-
-// }
-
-
-// var pastSearchHandler = function (event) {
-//     var city = event.target.getAttribute("data-city")
-//     if (city) {
-//         getCityWeather(city);
-//         get5Day(city);
-//     }
-
-//     pastSearchButtonEl.addEventListener("click", pastSearchHandler);
-// }
-
-// pastSearch();
 
 cityFormEl.addEventListener("submit", cityFormElSubmit);
 
