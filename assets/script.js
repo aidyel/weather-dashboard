@@ -16,7 +16,7 @@ var saveSearch = function () {
     localStorage.setItem("cities", JSON.stringify(cities));
 }
 
-var pastSearchButtonEl = document.querySelector("#past-search-buttons");
+var pastSearchButtonEl = document.querySelector("#past-search-btn");
 
 var cityFormElSubmit = function (event) {
     event.preventDefault();
@@ -231,10 +231,10 @@ var pastSearch = function(pastSearch){
  
     // console.log(pastSearch)
 
-    pastSearchEl = document.createElement("button");
+  var pastSearchEl = document.createElement("button");
     pastSearchEl.textContent = pastSearch;
     pastSearchEl.classList = "d-flex w-100 btn-light border p-2";
-    pastSearchEl.setAttribute("data-city",pastSearch)
+    pastSearchEl.setAttribute("data-city", pastSearch)
     pastSearchEl.setAttribute("type", "submit");
 
     pastSearchButtonEl.prepend(pastSearchEl);

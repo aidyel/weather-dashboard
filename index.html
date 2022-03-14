@@ -18,7 +18,7 @@
 
     <main class="no-gutters container-fluid">
         <div class="row">
-            <div class="col-md-3 mt-3 ml-4 search-colum">
+            <div class="col-12 col-md-3 p-2 search-colum">
                 <form class="border p-2" id="city-search-form">
                     <h3 class="mt-1">Searh for a City</h3>
                     <label class="form-label" for="cityname"></label>
@@ -28,11 +28,10 @@
                 </form>
                 <div class = "past-search border" id="past-search-btn"></div>
             </div>
-        </div>
-       
+     
+            <div class="col-12 col-md-9">
             <div class="row border selected-city" id="current-forecast">
-                <div class="col-md-8 ml-4 mt-3">
-                    <div class="card-body">
+                    <div class="col-12">
                     <h2 id="searched-city"></h2>
                     <div id="current-weather-container" class="list-group"></div>
                     </div>
@@ -44,6 +43,7 @@
             </div>
         </div>
         </div>
+
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
